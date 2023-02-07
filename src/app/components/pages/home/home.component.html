@@ -7,9 +7,12 @@
           <div class="card-body">
             <h5 class="card-title d-inline">{{ food.name }}</h5>
             <span class="ps-2 favourite {{food.favourite ? '' : 'not'}}">❤</span>
-            <star-rating [starType]="'svg'" [rating]="2.63"></star-rating>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
+            <star-rating [starType]="'svg'" [rating]="food.stars"></star-rating>
+            <div class="origins">
+              <span *ngFor="let origin of food.origins; let last = last">
+                {{origin.length > 3 ? (origin | titlecase) : (origin | uppercase) }} {{!last ? '|' : ''}}
+              </span>
+            </div>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </a>
