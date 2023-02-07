@@ -27,4 +27,8 @@ export class FoodService {
     return tag == 'All' ? this.getAll() : this.getAll().filter(food => food.tags?.map(tag => tag.toLowerCase()).includes(tag.toLowerCase()));
   }
 
+  getFoodById(id: string): Food {
+    return this.getAll().find(food => food.id === id) ?? new Food();
+  }
+
 }
