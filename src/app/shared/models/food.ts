@@ -1,7 +1,7 @@
 export class Food {
   id!: string;
   name!: string;
-  price!: string;
+  price!: number;
   tags?: string[];
   favourite!: boolean;
   stars!: number;
