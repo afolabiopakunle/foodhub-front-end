@@ -1,0 +1,7 @@
+<form (ngSubmit)="search(searchTerm)">
+  <div class="input-group mb-3 mx-auto w-50">
+    <input name="searchTerm" [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Search food"
+           aria-label="Recipient's username" aria-describedby="button-addon2">
+    <button (click)="search(searchTerm)" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+  </div>
+</form>
