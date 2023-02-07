@@ -13,7 +13,8 @@
                 {{origin.length > 3 ? (origin | titlecase) : (origin | uppercase) }} {{!last ? '|' : ''}}
               </span>
             </div>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div> {{food.cookTime}} minutes</div>
+            <a href="#" class="btn btn-primary">{{food.price | currency}}</a>
           </div>
         </a>
       </div>
