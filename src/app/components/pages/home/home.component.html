@@ -4,7 +4,7 @@
     <ng-container *ngFor="let food of foods">
       <div class="col-md-3">
         <a routerLink="/food/{{food.id}}" class="card">
-          <img [src]="food.imageURL" class="card-img-top" [alt]="food.name">
+          <img [src]="food.imageURL" class="card-img-top" [alt]="food.name" [title]="food.tags">
           <div class="card-body">
             <h5 class="card-title d-inline">{{ food.name }}</h5>
             <span class="ps-2 favourite {{food.favourite ? '' : 'not'}}">❤</span>

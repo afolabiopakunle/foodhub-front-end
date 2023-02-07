@@ -23,7 +23,6 @@ export class SearchComponent {
 
   search(term: string) {
     if(term)
-      console.log(term)
       this.router.navigateByUrl('/search/' + term);
   }
 }
