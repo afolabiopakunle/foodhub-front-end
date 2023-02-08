@@ -20,7 +20,6 @@ export class FoodPageComponent {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       this.food = this.foodService.getFoodById(params['id']);
-      console.log(this.food)
     })
   }
 }
