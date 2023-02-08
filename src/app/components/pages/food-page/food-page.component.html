@@ -13,6 +13,6 @@
     <p>Time to cook: <strong>About {{food.cookTime}} </strong> </p>
     <h4>Price: <span class="text-primary">{{food.price | currency }}</span></h4>
 
-    <button class="btn btn-danger rounded-5 w-100">Add to cart</button>
+    <button (click)="addToCart()" class="btn btn-danger rounded-5 w-100">Add to cart</button>
   </div>
 </div>
