@@ -1,32 +1,46 @@
 <app-title title="Cart Page" margin="1.543m 0 0 2.5rem"></app-title>
-
-<ul class="list-group">
-  <li role="button" *ngFor="let cartItem of cart.items" class="list-group-item">
-    <div class="row gx-5" style="align-items: center">
-      <div class="col-md-3">
-        <img routerLink="/food/{{cartItem.food.id}}" width="140" class="img-fluid rounded-3" [src]="cartItem.food.imageURL" [alt]="cartItem.food.name">
+<div class="row">
+  <div class="col-md-9">
+    <ul class="list-group">
+      <li role="button" *ngFor="let cartItem of cart.items" class="list-group-item">
+        <div class="row gx-5" style="align-items: center">
+          <div class="col-md-3">
+            <img routerLink="/food/{{cartItem.food.id}}" width="140" class="img-fluid rounded-3"
+                 [src]="cartItem.food.imageURL" [alt]="cartItem.food.name">
+          </div>
+          <div class="col-md-3 align-center">
+            <strong>{{cartItem.food.name}}</strong>
+          </div>
+          <div class="col-md-2">
+            <select name="" id=""
+                    #quantitySelect
+                    [value]="cartItem.quantity"
+                    (change)="changeQuantity(cartItem, quantitySelect.value)">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            {{cartItem.price | currency}}
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-sm btn-danger" (click)="removeFromCart(cartItem)">Remove</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <div class="">
+        <div>Count: {{ cart.totalCount }}</div>
+        <div>Price: {{ cart.totalPrice | currency }}</div>
       </div>
-      <div class="col-md-3 align-center">
-        <strong>{{cartItem.food.name}}</strong>
-      </div>
-      <div class="col-md-2">
-        <select name="" id=""
-                #quantitySelect
-                [value]="cartItem.quantity"
-                (change)="changeQuantity(cartItem, quantitySelect.value)">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        {{cartItem.price | currency}}
-      </div>
-      <div class="col-md-2">
-        <button class="btn btn-sm btn-danger" (click)="removeFromCart(cartItem)">Remove</button>
-      </div>
+      <a routerLink="/checkout" class="btn rounded-5 btn-lg btn-success w-75 mt-3">Proceed to checkout</a>
     </div>
-  </li>
-</ul>
+  </div>
+</div>
+
