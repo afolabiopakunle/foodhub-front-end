@@ -1,5 +1,9 @@
-
-<div class="row pt-5 gx-5">
+<app-not-found
+  [visible]="!food.id"
+  notFoundMessage="Food not found"
+  resetLinkText="Back to homepage"
+  ></app-not-found>
+<div class="row pt-5 gx-5" *ngIf="food.id">
   <div class="col-md-5">
     <img class="img-fluid rounded-3" [src]="food.imageURL" [alt]="food.name">
   </div>
@@ -7,10 +11,12 @@
     <h4>{{ food.name }}</h4>
     <star-rating [starType]="'svg'" [rating]="food.stars"></star-rating>
 
-    <span class="bg-warning text-white rounded mx-2 px-2 py-1 my-2 d-inline-block" *ngFor="let tag of food.origins"> {{tag.length > 2 ? (tag | titlecase) : tag | uppercase}} </span>
+    <span class="bg-warning text-white rounded mx-2 px-2 py-1 my-2 d-inline-block"
+          *ngFor="let tag of food.origins"> {{tag.length > 2 ? (tag | titlecase) : tag | uppercase}} </span>
     <br>
-    <span class="bg-secondary text-white rounded-5 mx-2 px-2 py-1 my-2 d-inline-block" *ngFor="let tag of food.tags"> {{tag}} </span>
-    <p>Time to cook: <strong>About {{food.cookTime}} </strong> </p>
+    <span class="bg-secondary text-white rounded-5 mx-2 px-2 py-1 my-2 d-inline-block"
+          *ngFor="let tag of food.tags"> {{tag}} </span>
+    <p>Time to cook: <strong>About {{food.cookTime}} </strong></p>
     <h4>Price: <span class="text-primary">{{food.price | currency }}</span></h4>
 
     <button (click)="addToCart()" class="btn btn-danger rounded-5 w-100">Add to cart</button>
