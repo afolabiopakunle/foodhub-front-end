@@ -1,1 +1,4 @@
-<p>not-found works!</p>
+<div *ngIf="visible" class="text-center pt-5">
+  <h3> {{notFoundMessage}} </h3> <br>
+  <a class="btn btn-danger btn-lg" [routerLink]="resetLink">{{resetLinkText}}</a>
+</div>
