@@ -16,9 +16,10 @@ export class SearchComponent {
   }
 
   ngOnInit() {
-    // this.activatedRoute.params.subscribe(params => {
-    //   params['searchTerm'] ? this.searchTerm = params['searchTerm'] : null
-    // })
+    this.activatedRoute.params.subscribe(params => {
+      params['searchTerm'] ? this.searchTerm = params['searchTerm'] : null;
+    });
+    this.search(this.searchTerm)
   }
 
   search(term: string) {

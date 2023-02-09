@@ -8,7 +8,7 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'search/:searchTerm', component: HomeComponent },
-  { path: 'tag/:tag', component: HomeComponent},
+  { path: 'tags/:tag', component: HomeComponent},
   { path: 'food/:id', component: FoodPageComponent },
   { path: 'cart-page', component: CartPageComponent },
   { path: 'checkout', component: CheckoutComponent },

@@ -24,7 +24,7 @@ export class FoodService {
   }
 
   getAllFoodsBySearchTerm(searchTerm: string): Observable<Food[]> {
-    return this.http.get<Food[]>(FOODS_BY_SEARCH_URL + searchTerm)
+    return this.http.get<Food[]>(FOODS_BY_SEARCH_URL + searchTerm);
   }
 
   getAllTags(): Observable<Tag[]> {
@@ -32,7 +32,8 @@ export class FoodService {
   }
 
   getAllFoodByTags(tag: string): Observable<Food[]> {
-    return tag === 'All' ? this.getAll() : this.http.get<Food[]>(FOODS_BY_TAG_URL + tag)
+    console.log('TAG', tag);
+    return tag === 'All' ? this.getAll() : this.http.get<Food[]>(FOODS_BY_TAG_URL + tag);
   }
 
   getFoodById(id: string): Observable<Food> {

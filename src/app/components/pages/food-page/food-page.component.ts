@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Food } from '../../../shared/models/food';
 import { FoodService } from '../../../services/food.service';
 import { CartService } from '../../../services/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-food-page',
@@ -22,12 +23,18 @@ export class FoodPageComponent {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      this.food = this.foodService.getFoodById(params['id']);
+      this.foodService.getFoodById(params['id']).subscribe(food => {
+        this.food = food;
+      });
     });
   }
 
   addToCart() {
     this.cartService.addToCart(this.food);
     this.router.navigateByUrl('/cart-page');
+  }
+
+  ngOnDestroy() {
+
   }
 }
