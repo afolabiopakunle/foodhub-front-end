@@ -8,13 +8,27 @@
         <input formControlName="email" type="email" class="form-control" id="floatingInput"
                placeholder="name@example.com">
         <label for="floatingInput">Email address</label>
+        <div class="is-valid" *ngIf="isSubmitted">
+          <div *ngIf="fc['email'].errors?.['required']">
+            Email is required
+          </div>
+          <div *ngIf="fc['email'].errors?.['email']">
+            Email is incorrect
+          </div>
+        </div>
       </div>
+
       <div class="form-floating">
         <input formControlName="password" type="password" class="form-control" id="floatingPassword"
                placeholder="Password">
         <label for="floatingPassword">Password</label>
+        <div *ngIf="isSubmitted">
+          <div *ngIf="fc['password'].errors?.['required']">
+            Email is required
+          </div>
+        </div>
       </div>
-      <button [disabled]="loginForm.invalid" class="btn btn-secondary mt-3 btn-lg" type="submit">Login</button>
+      <button class="btn btn-secondary mt-3 btn-lg" type="submit">Login</button>
     </form>
   </div>
 </div>

@@ -25,6 +25,9 @@ export class LoginComponent {
   }
 
   submit(form: FormGroup) {
-    console.log(form.value)
+    this.isSubmitted =  true;
+    if(this.loginForm.invalid) return;
+    alert(`Email: ${this.fc['email'].value}
+    Password: ${this.fc['password'].value}`)
   }
 }
