@@ -6,12 +6,14 @@ import { IUserLogin } from '../shared/interfaces/IUserLogin';
 import { USER_LOGIN_URL } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 
+const USER_KEY = 'User';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private userSubject = new BehaviorSubject<User>(new User());
+  private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
   public userObservable!: Observable<User>;
 
   constructor(private http: HttpClient,
@@ -23,9 +25,10 @@ export class UserService {
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
       tap({
         next: (user) => {
+          this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toasterService.success(`Welcome to FoodHub ${user.firstname}`,
-            `Login Successful!`)
+            `Login Successful!`);
         },
         error: (errorResponse) => {
           this.toasterService.error(errorResponse.error, 'Login Failed!')
@@ -34,4 +37,13 @@ export class UserService {
     );
   }
 
+  private setUserToLocalStorage(user: User) {
+    localStorage.setItem(USER_KEY, JSON.stringify(user))
+  }
+
+  private getUserFromLocalStorage(): User {
+    const userJSON = localStorage.getItem('User');
+    if(userJSON) return JSON.parse(userJSON) as User;
+    return new User();
+  }
 }
